@@ -239,11 +239,11 @@
 
   .leftButton {
     left: 0;
-    background: linear-gradient(to left, rgba(0,0,0,0), var(--background-color) 100%);
+    background: linear-gradient(to left, rgba(0,0,0,0), var(--background-color));
   }
 
   .rightButton {
     right: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0), var(--background-color) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0), var(--background-color));
   }
 </style>

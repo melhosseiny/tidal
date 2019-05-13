@@ -254,7 +254,7 @@ export default {
     -webkit-appearance: none;
     overflow: hidden;
     vertical-align: middle;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     color: #000;
 
     &:active {

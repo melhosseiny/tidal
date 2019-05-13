@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form :class="$style.autocomplete">
+    <form :class="$style.autocomplete" autocomplete="off">
       <input
         name="search"
         :class="$style.input"

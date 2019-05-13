@@ -56,7 +56,7 @@
   }
 
   .albums {
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin-top: var(--spacing-2x);
+    margin-bottom: var(--spacing-2x);
   }
 </style>

@@ -128,7 +128,7 @@ export default {
   .tracklist {
     display: flex;
     flex-direction: column;
-    border-radius: 2px;
+    border-radius: var(--border-radius-half);
     & .track {
       display: flex;
       flex-direction: row;
