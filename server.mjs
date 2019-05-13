@@ -15,6 +15,7 @@ let app = express();
 let server = http.Server(app);
 
 app.use(compression());
+app.use(express.static('static'));
 app.use(express.static('dist'));
 
 app.get('/search/artist', async function(req, res) {

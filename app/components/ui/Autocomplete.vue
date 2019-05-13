@@ -1,7 +1,21 @@
 <template>
   <div>
     <form :class="$style.autocomplete">
-      <input :class="$style.input" :placeholder="placeholder" @focus="showOptions" @blur="hideOptions" @keyup="autocomplete" @keyup.down="arrowDown" @keyup.up="arrowUp" @keyup.enter="enter" type="text" v-model="query" ref="input">
+      <input
+        name="search"
+        :class="$style.input"
+        :placeholder="placeholder"
+        @focus="showOptions"
+        @blur="hideOptions"
+        @keyup="autocomplete"
+        @keyup.down="arrowDown"
+        @keyup.up="arrowUp"
+        @keyup.enter="enter"
+        type="text"
+        v-model="query"
+        ref="input"
+        aria-label="search"
+      >
       <div :class="[$style.options, inputFocus? $style.active : '']">
         <div :class="$style.progress" v-if="loading">Loading ...</div>
         <div v-else>
@@ -94,7 +108,7 @@
     & .input {
       font-family: var(--type);
       background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.4);
+      color: rgba(255,255,255,.6);
       font-size: inherit;
       flex-grow: 1;
       margin-right: var(--spacing);
@@ -111,7 +125,7 @@
         }
       }
       &::placeholder {
-        color: rgba(255,255,255,.4);
+        color: rgba(255,255,255,.6);
         font-family: var(--type);
       }
     }
