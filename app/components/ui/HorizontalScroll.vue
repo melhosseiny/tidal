@@ -103,7 +103,7 @@
         console.log("reset", lazyImages);
         let lazyImageObserver = this.lazyImageObserver;
         lazyImages.forEach(function(lazyImage) {
-          lazyImage.src = "data:image/gif;base64,R0lGODlhBAEUAQAAACH5BAEAAAEALAAAAAAEARQBAA==";
+          lazyImage.src = "data:image/gif;base64,R0lGODlhqgCqAAAAACH5BAEAAAEALAAAAACqAKoAADs=";
           lazyImage.classList.remove("lazy-loaded");
           lazyImage.classList.add("lazy");
           lazyImageObserver.unobserve(lazyImage);

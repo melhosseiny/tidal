@@ -11,7 +11,7 @@
       <HorizontalScroll v-if="albums.length" :items="albums" :itemWidth="170">
         <template v-slot:default="slotProps">
           <figure>
-            <img class="lazy" @click.prevent="select(slotProps.item)" src="data:image/gif;base64,R0lGODlhBAEUAQAAACH5BAEAAAEALAAAAAAEARQBAA==" :data-src="slotProps.item.cover_medium">
+            <img class="lazy" @click.prevent="select(slotProps.item)" src="data:image/gif;base64,R0lGODlhqgCqAAAAACH5BAEAAAEALAAAAACqAKoAADs=" :data-src="slotProps.item.cover_medium">
           </figure>
           <a href="#" @click.prevent="select(slotProps.item)">{{slotProps.item.title}}</a>
         </template>
