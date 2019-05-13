@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 import url from 'url';
+import compression from 'compression';
 
 import axios from 'axios';
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 5000;
 let app = express();
 let server = http.Server(app);
 
+app.use(compression());
 app.use(express.static('dist'));
 
 app.get('/search/artist', async function(req, res) {

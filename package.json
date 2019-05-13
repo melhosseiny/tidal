@@ -1,6 +1,7 @@
 {
   "name": "tidal",
   "version": "0.0.1",
+  "description": "Tidal discovery app",
   "private": true,
   "engines": {
     "node": "11.x"
@@ -10,7 +11,7 @@
     "start": "node --experimental-modules server",
     "watch": "npx webpack --watch --config webpack.config.dev.js",
     "build:dev": "npx webpack --config webpack.config.dev.js",
-    "build:prod": "npx webpack --config webpack.config.prod.js"
+    "build": "npx webpack --config webpack.config.prod.js"
   },
   "browserslist": [
     "last 1 version",
@@ -26,6 +27,7 @@
   "license": "CC BY-NC-ND 4.0",
   "dependencies": {
     "axios": "^0.18.0",
+    "compression": "^1.7.4",
     "es6-promise": "^4.2.6",
     "express": "^4.16.4",
     "intersection-observer": "^0.7.0",
