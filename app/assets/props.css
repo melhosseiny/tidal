@@ -1,0 +1,15 @@
+:root {
+  --type: "Roboto Condensed", sans-serif;
+
+  --background-color: #1c1c1c;
+  --primary-color: #0ff;
+  --accent-color: #f0f;
+  --text-color: #fff;
+  --overlay-background-color: #282828;
+
+  --spacing-half: 8px;
+  --spacing: 16px;
+  --spacing-2x: 32px;
+  --border-radius: 4px;
+  --border-radius-half: 2px;
+}

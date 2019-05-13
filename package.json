@@ -1,0 +1,61 @@
+{
+  "name": "tidal",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "11.x"
+  },
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node --experimental-modules server",
+    "watch": "npx webpack --watch --config webpack.config.dev.js",
+    "build:dev": "npx webpack --config webpack.config.dev.js",
+    "build:prod": "npx webpack --config webpack.config.prod.js"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melhosseiny/tidal.git"
+  },
+  "author": "Mostafa Elshamy",
+  "license": "CC BY-NC-ND 4.0",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "es6-promise": "^4.2.6",
+    "express": "^4.16.4",
+    "intersection-observer": "^0.7.0",
+    "lodash": "^4.17.11",
+    "luxon": "^1.13.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6",
+    "vuex": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.3.4",
+    "autoprefixer": "^9.5.0",
+    "babel-loader": "^8.0.5",
+    "browserslist": "^4.5.3",
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.1",
+    "cssnano": "^4.1.10",
+    "mini-css-extract-plugin": "^0.6.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.6.0",
+    "raw-loader": "^1.0.0",
+    "style-loader": "^0.23.1",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-merge": "^4.2.1"
+  }
+}
