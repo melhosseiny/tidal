@@ -47,6 +47,7 @@ However, `IE11` is not supported.
     App.vue             --> Root component
     dist/               --> Webpack build output
     static/             --> Static files such as robots.txt
+    test/               --> E2E, integration and unit tests
     babel.config.js     --> Babel config
     index.html          --> Root markup template
     postcss.config.js   --> PostCSS config
@@ -74,7 +75,7 @@ However, `IE11` is not supported.
 
 - Instead of using a user interface library, I built autocomplete and carousel components and abstracted their inner workings from application components.
 
-- The `Albums` component uses the slot outlet exposed by `HorizontalScroll` to add its content without `HorizontalScroll` having to know about the structure of an album data item. This works by binding the item to the slot element in the child component which makes **slot props** accessible in the parent scope.
+- The `Albums` component uses the slot outlet exposed by `HorizontalScroll` to add its content without `HorizontalScroll` having to know about the structure of an album data item. This works by binding the item to the slot element in the child component which makes slot props accessible in the parent scope.
 
 - Application state lives in a Vuex store, but passed down using props to user interface components to avoid coupling them to the application data format.
 
@@ -93,8 +94,6 @@ However, `IE11` is not supported.
       }
 
       animation: pulse 1000ms linear infinite forwards;
-
-- I really, really wanted to include unit tests using [Vue Test Utils](https://vue-test-utils.vuejs.org/) and [Jest](https://jestjs.io/) or [Storybook](https://storybook.js.org/) visual testing.
 
 ## Babel config
 
