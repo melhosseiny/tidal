@@ -80,7 +80,6 @@
               console.log(entry, entry.isIntersecting);
               let lazyImage = entry.target;
               lazyImage.src = lazyImage.dataset.src;
-              //lazyImage.srcset = lazyImage.dataset.srcset;
               lazyImage.classList.remove("lazy");
               lazyImage.classList.add("lazy-loaded");
               lazyImageObserver.unobserve(lazyImage);
@@ -241,11 +240,11 @@
 
   .leftButton {
     left: 0;
-    background: linear-gradient(to left, rgba(0,0,0,0), var(--background-color));
+    background: linear-gradient(to left, rgba(0,0,0,0), color-mod(var(--background-color) a(0.8)));
   }
 
   .rightButton {
     right: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0), var(--background-color));
+    background: linear-gradient(to right, rgba(0,0,0,0), color-mod(var(--background-color) a(0.8)));
   }
 </style>

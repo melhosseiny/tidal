@@ -35,8 +35,6 @@
 </template>
 
 <script>
-  import _ from 'lodash';
-
   export default {
     props: [
       'loading',
@@ -60,9 +58,7 @@
         if (event.key === "ArrowUp" || event.key === "ArrowDown" || event.key === "Enter") {
           return;
         }
-        //return _.throttle(function() {
         this.$emit('fetch', this.query);
-        //}, 1000)
       },
       arrowDown() {
         if (this.arrowCount < this.items.length-1) {
