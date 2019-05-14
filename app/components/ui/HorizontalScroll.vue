@@ -185,6 +185,7 @@
       display: none;
     }
     scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .item {
@@ -228,6 +229,7 @@
     border: 0;
     border-radius: 0;
     color: #fff;
+    margin: 0;
     padding: 0;
     &:hover {
       background-color: transparent;
