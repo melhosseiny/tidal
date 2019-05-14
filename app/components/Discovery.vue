@@ -1,7 +1,6 @@
 <template>
   <div :class="$style.discovery">
     <Autocomplete :class="$style.search" placeholder="Search" :items="artists" :loading="loading" :delay="1000" @fetch="fetchOptions" @select="setSelectedArtist"/>
-    <!--HorizontalScroll :items="Array.from(Array(15).keys()).map(k => k + 1)" :itemWidth="170"/-->
     <Albums :class="$style.albums" :artistId="13"/>
     <Tracklist :albumId="7184797"/>
   </div>

@@ -1,28 +1,26 @@
 <template>
-  <div>
-    <!--p>frames {{requestIds.length}} / {{viewPortWidth}}px {{groupSize}} items: {{page}}/{{pages}}, last: {{lastPage}}</p-->
-    <div :class="$style.itemsContainer">
-      <ul :class="$style.items" ref="items">
-        <li :class="$style.item" v-for="item in items">
-          <slot :item="item">
-          </slot>
-        </li>
-      </ul>
-      <button :disabled="requestIds.length > 0" :class="$style.leftButton" @click="left">
-        <i class="material-icons">keyboard_arrow_left</i>
-      </button>
-      <button :disabled="requestIds.length > 0" :class="$style.rightButton" @click="right">
-        <i class="material-icons">keyboard_arrow_right</i>
-      </button>
-    </div>
+  <div :class="$style.itemsContainer">
+    <ul :class="$style.items" ref="items">
+      <li :class="$style.item" v-for="item in items">
+        <slot :item="item">
+        </slot>
+      </li>
+    </ul>
+    <button :disabled="requestIds.length > 0" :class="$style.leftButton" @click="left">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </button>
+    <button :disabled="requestIds.length > 0" :class="$style.rightButton" @click="right">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </button>
   </div>
 </template>
 
 <script>
   import intersectionObserver from 'intersection-observer';
 
+  const placeholderGIF = "data:image/gif;base64,R0lGODlhqgCqAAAAACH5BAEAAAAALAAAAACqAKoAAAICTAEAOw==";
+
   let linear = function(t,b,e,d) {
-    console.log(t, d);
     return (e-b)*t/d + b;
   }
 
@@ -43,28 +41,19 @@
     },
     computed: {
       pages() {
-        console.log(this.items.length, this.groupSize);
         return Math.ceil(this.items.length / this.groupSize);
-      },
-      lastPage() {
-        return this.requestIds.length === 0 && this.page === this.pages;
       },
       itemTotalWidth() {
         return this.itemWidth + this.itemRightMargin;
       },
       groupWidth() {
         return this.groupSize * this.itemTotalWidth;
-      },
-      lastGroupSize() {
-        const rem = this.items.length % this.groupSize;
-        return rem? rem : this.groupSize;
       }
     },
     mounted () {
       this.viewPortWidth = this.$refs.items.clientWidth;
       this.visibleItemCount();
       window.addEventListener('resize', () => {
-        console.log(this.$refs.items.clientWidth);
         this.viewPortWidth = this.$refs.items.clientWidth;
         this.visibleItemCount();
       })
@@ -73,11 +62,9 @@
     methods: {
       lazyLoad() {
         let lazyImages = [].slice.call(this.$refs.items.querySelectorAll("img.lazy"));
-        console.log(lazyImages);
         let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
           entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-              console.log(entry, entry.isIntersecting);
               let lazyImage = entry.target;
               lazyImage.src = lazyImage.dataset.src;
               lazyImage.classList.remove("lazy");
@@ -99,10 +86,9 @@
       resetLazyLoad() {
         let lazyImages = [].slice.call(this.$refs.items.querySelectorAll("img.lazy-loaded"));
 
-        console.log("reset", lazyImages);
         let lazyImageObserver = this.lazyImageObserver;
         lazyImages.forEach(function(lazyImage) {
-          lazyImage.src = "data:image/gif;base64,R0lGODlhqgCqAAAAACH5BAEAAAAALAAAAACqAKoAAAICTAEAOw==";
+          lazyImage.src = placeholderGIF;
           lazyImage.classList.remove("lazy-loaded");
           lazyImage.classList.add("lazy");
           lazyImageObserver.unobserve(lazyImage);
@@ -118,11 +104,8 @@
       animateScrollLeft(node, from, to, t) {
         let that = this;
 
-        console.log('animating', from, to, node.scrollWidth);
-
         if (from < to) {
           node.scrollLeft = linear(t, from, to, 300);
-          console.log('XXX', from, to, node.scrollLeft, this.viewPortWidth, from + this.viewPortWidth, node.scrollWidth)
           if (node.scrollLeft + this.viewPortWidth >= node.scrollWidth) {
             this.cancelAllAnimationFrames();
             return;
@@ -130,7 +113,6 @@
         } else if (from > to) {
           node.scrollLeft = linear(t, from, to, 300);
           if (from <= 0) {
-            console.log('here from > to', from, to, from, node.scrollWidth);
             this.cancelAllAnimationFrames();
             return;
           }

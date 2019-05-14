@@ -268,7 +268,7 @@ export default {
     }
 
     &:global(.material-icons) {
-      margin-right: 8px;
+      margin-right: var(--spacing-half);
     }
   }
 </style>

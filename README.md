@@ -25,14 +25,12 @@ You can also run `npm run build` to build the app for production.
 
 I use the following `browserslist` config
 
-```
-"browserslist": [
-  "last 1 version",
-  "> 1%",
-  "maintained node versions",
-  "not dead"
-],
-```
+    "browserslist": [
+      "last 1 version",
+      "> 1%",
+      "maintained node versions",
+      "not dead"
+    ],
 
 However, `IE11` is not supported.
 
@@ -63,7 +61,7 @@ However, `IE11` is not supported.
 - ECMAScript compiler: [Babel](https://babeljs.io/)
 - Module bundler: [Webpack](https://webpack.js.org/)
 - CSS processor: [PostCSS](https://postcss.org/)
-- HTTP Client: [Axios](https://github.com/visionmedia/jade)
+- HTTP Client: [Axios](https://github.com/axios/axios)
 - Date/time library: [Luxon](https://moment.github.io/luxon/)
 
 ## Design notes
@@ -76,15 +74,27 @@ However, `IE11` is not supported.
 
 - Instead of using a user interface library, I built autocomplete and carousel components and abstracted their inner workings from application components.
 
-- Application state lives in a Vuex store, but passed down as props to user interface components to avoid coupling them to the application data format.
+- The `Albums` component uses the slot outlet exposed by `HorizontalScroll` to add its content without `HorizontalScroll` having to know about the structure of an album data item. This works by binding the item to the slot element in the child component which makes **slot props** accessible in the parent scope.
+
+- Application state lives in a Vuex store, but passed down using props to user interface components to avoid coupling them to the application data format.
+
+- Filters such as `duration` are registered globally since they're likely to be used across application components.
 
 - Album covers are lazy loaded upon scrolling using the Intersection Observer API. Since it is not supported in all browsers, I added a polyfill. I used a tiny base64 transparent GIF as a placeholder.
 
       data:image/gif;base64,R0lGODlhqgCqAAAAACH5BAEAAAAALAAAAACqAKoAAAICTAEAOw==
 
-- The `Albums` component uses the slot outlet exposed by `HorizontalScroll` to add its content without `HorizontalScroll` having to know about the structure of an album data item. This works by binding the item to the slot element in the child component which makes **slot props** accessible in the parent scope.
+- I used content placeholders and a pulse animation to indicate progress on asynchronous data operations.  
 
-- I really, really wanted to include unit tests using [Vue Test Utils](https://vue-test-utils.vuejs.org/) and [Jest](https://jestjs.io/).
+      @keyframes pulse {
+        0% { opacity: 0.75; }
+        50% { opacity: 1; }
+        100% { opacity: 0.75; }
+      }
+
+      animation: pulse 1000ms linear infinite forwards;
+
+- I really, really wanted to include unit tests using [Vue Test Utils](https://vue-test-utils.vuejs.org/) and [Jest](https://jestjs.io/) or [Storybook](https://storybook.js.org/) visual testing.
 
 ## Babel config
 
@@ -96,7 +106,7 @@ However, `IE11` is not supported.
 - [CSS Modules](https://github.com/css-modules/css-modules) to locally scope style rules
 - [autoprefixer](https://github.com/postcss/autoprefixer) to automatically add vendor prefixes
 - [postcss-preset-env](https://preset-env.cssdb.org/) to use modern CSS features such as custom props, custom media queries and nesting rules
-- [cssnano](https://cssnano.co/) to compress CSS.
+- [cssnano](https://cssnano.co/) to compress CSS
 
 ## Webpack config
 
@@ -115,7 +125,7 @@ However, `IE11` is not supported.
 ### Prod
 
 - mode set to `production`
-- [mini-css-extract-plugin](`https://github.com/webpack-contrib/mini-css-extract-plugin`) to avoid flash of unstyled content
+- [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to avoid flash of unstyled content
 
 Dev/prod configs are merged with the common config using [webpack-merge](https://github.com/survivejs/webpack-merge).
 

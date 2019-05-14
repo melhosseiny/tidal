@@ -18,7 +18,7 @@ app.use(compression());
 app.use(express.static('static'));
 app.use(express.static('dist'));
 
-app.get('/search/artist', async function(req, res) {
+app.get('/search/artist', async function(req, res, next) {
   try {
     const {data} = await axios.get(`${API_ROOT}/search/artist/`, {
       params: {
@@ -28,25 +28,25 @@ app.get('/search/artist', async function(req, res) {
     });
     res.status(200).send(data.data);
   } catch (error) {
-    res.status(500).send({message: error});
+    next(error);
   }
 });
 
-app.get('/albums/:artistId', async function(req, res) {
+app.get('/albums/:artistId', async function(req, res, next) {
   try {
     const {data} = await axios.get(`${API_ROOT}/artist/${req.params.artistId}/albums`);
     res.status(200).send(data.data);
   } catch(error) {
-    res.status(500).send({message: error});
+    next(error);
   }
 });
 
-app.get('/tracklist/:albumId', async function(req, res) {
+app.get('/tracklist/:albumId', async function(req, res, next) {
   try {
     const {data} = await axios.get(`${API_ROOT}/album/${req.params.albumId}/tracks`);
     res.status(200).send(data.data);
   } catch(error) {
-    res.status(500).send({message: error});
+    next(error);
   }
 });
 
