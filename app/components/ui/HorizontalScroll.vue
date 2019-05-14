@@ -102,8 +102,6 @@
         this.requestIds = [];
       },
       animateScrollLeft(node, from, to, t) {
-        let that = this;
-
         if (from < to) {
           node.scrollLeft = linear(t, from, to, 300);
           if (node.scrollLeft + this.viewPortWidth >= node.scrollWidth) {
@@ -121,9 +119,9 @@
           return;
         }
 
-        const requestId = requestAnimationFrame(function() {
-          that.animateScrollLeft(node, node.scrollLeft, to, t+10);
-        });
+        const requestId = requestAnimationFrame(
+          () => this.animateScrollLeft(node, node.scrollLeft, to, t+10)
+        );
         this.requestIds.push(requestId);
       },
       left() {

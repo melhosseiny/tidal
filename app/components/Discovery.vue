@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.discovery">
     <Autocomplete :class="$style.search" placeholder="Search" :items="artists" :loading="loading" :delay="1000" @fetch="fetchOptions" @select="setSelectedArtist"/>
-    <Albums :class="$style.albums" :artistId="13"/>
+    <Albums :class="$style.albums" :artistId="1878"/>
     <Tracklist :albumId="7184797"/>
   </div>
 </template>
