@@ -1,6 +1,6 @@
 # Tidal Discovery
 
-This is a [Vue 2](https://github.com/vuejs/vue) app that implements music catalog discovery using the [Deezer API](https://developers.deezer.com/).
+[Vue 2](https://github.com/vuejs/vue) app that implements music catalog discovery using the [Deezer API](https://developers.deezer.com/).
 
 ![App screenshot on desktop](/static/tidal-screenshot-desktop.png)
 
